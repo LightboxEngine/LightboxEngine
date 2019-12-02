@@ -384,10 +384,6 @@ if (GLFW_BUILD_TESTS)
     add_subdirectory(tests)
 endif()
 
-if (DOXYGEN_FOUND AND GLFW_BUILD_DOCS)
-    add_subdirectory(docs)
-endif()
-
 #--------------------------------------------------------------------
 # Install files other than the library
 # The library is installed by src/CMakeLists.txt

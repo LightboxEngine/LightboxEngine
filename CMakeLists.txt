@@ -12,15 +12,17 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=return-type")
 
 # Engine sources, used in EVERYTHING that uses the engine(for now).
 file(GLOB EngineSOURCES
-"Engine/src/RenderDevice/*.cpp" "Engine/src/RenderDevice/*.h"
-"Engine/src/RenderDevice/OpenGL/*.cpp" "Engine/src/RenderDevice/OpenGL/*.h"
-"Engine/src/RenderDevice/None/*.cpp" "Engine/src/RenderDevice/None/*.h"
-"Libraries/glad/src/glad.c"
+    "Engine/src/*.cpp" "Engine/src/*.h"
+    "Engine/src/RenderDevice/*.cpp" "Engine/src/RenderDevice/*.h"
+    "Engine/src/RenderDevice/OpenGL/*.cpp" "Engine/src/RenderDevice/OpenGL/*.h"
+    "Engine/src/RenderDevice/None/*.cpp" "Engine/src/RenderDevice/None/*.h"
+    "Engine/src/Math/*.cpp" "Engine/src/Math/*.h"
+    "Libraries/glad/src/glad.c"
 )
 
 project (Engine)# Create project named Engine
 
-add_executable(Engine "Engine/src/*.cpp" "Engine/src/*.h" ${EngineSOURCES})# Create executable with the sources and headers.
+add_executable(Engine ${EngineSOURCES})# Create executable with the sources and headers.
 
 # Include all needed include directories.
 target_include_directories(Engine PUBLIC Engine/src/)

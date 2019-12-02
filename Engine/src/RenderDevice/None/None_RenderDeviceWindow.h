@@ -1,6 +1,6 @@
 #pragma once
-#include "Types/Vector3f.h"
 #include <string>
+#include "Math/Vector3f.h"
 
 class None_RenderDeviceWindow
 {

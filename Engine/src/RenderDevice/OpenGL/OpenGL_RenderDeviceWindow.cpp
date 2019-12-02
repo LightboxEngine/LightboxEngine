@@ -6,12 +6,7 @@
 
 #include "RenderDevice/OpenGL/OpenGL_RenderDeviceWindow.h"
 
-#include "Types/Vector2i.h"
-#include "Managing/AssetImport.h"
-
-#include "Managing/FileSystem.h"
-
-#include "App/Application.h"
+#include "Math/Vector2i.h"
 
 OpenGL_RenderDeviceWindow::OpenGL_RenderDeviceWindow()
 {
@@ -27,23 +22,12 @@ OpenGL_RenderDeviceWindow::~OpenGL_RenderDeviceWindow()
 
 void glfwInputCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    if (action == GLFW_PRESS)
-    {
-        ((OpenGL_RenderDeviceWindow*)Application::renderDeviceWindow)->keyPressed = key;
-        ((OpenGL_RenderDeviceWindow*)Application::renderDeviceWindow)->keyReleased = -1;
-    }
-    else if (action == GLFW_RELEASE){
-        ((OpenGL_RenderDeviceWindow*)Application::renderDeviceWindow)->keyPressed = -1;
-        ((OpenGL_RenderDeviceWindow*)Application::renderDeviceWindow)->keyReleased = key;
-    }
-
-
+    std::cout << "Need to implement glfwInputCallback or find a different methode for input." << std::endl;
 }
 
 void character_callback(GLFWwindow* window, unsigned int codepoint)
 {
-    ((OpenGL_RenderDeviceWindow*)Application::renderDeviceWindow)->charPressed = codepoint;
-    ((OpenGL_RenderDeviceWindow*)Application::renderDeviceWindow)->pressed = true;
+    std::cout << "Need to implement character_callback or find a different methode for input." << std::endl;
 }
 
 void OpenGL_RenderDeviceWindow::Init(unsigned int _width, unsigned int _height, bool _vsyncEnabled)
@@ -72,12 +56,12 @@ void OpenGL_RenderDeviceWindow::Init(unsigned int _width, unsigned int _height, 
     glfwSwapInterval(vsync); // Enable vsync
     glfwSetKeyCallback(GLFWGLwindow, glfwInputCallback);
     glfwSetCharCallback(GLFWGLwindow, character_callback);
-    GLFWimage icons[1];
+    /*GLFWimage icons[1];
 
     icons[0].pixels = AssetImport::loadTextureFromFile(FileSystem::GetAssetDir() + std::string("/logo_64.png"), 4);
     icons[0].width = 64;
     icons[0].height = 64;
-    glfwSetWindowIcon(GLFWGLwindow, 1, icons);
+    glfwSetWindowIcon(GLFWGLwindow, 1, icons);*/ ///Todo
     /*if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;

@@ -1,5 +1,5 @@
 #pragma once
-#include "Types/Vector2i.h"
+#include "Math/Vector2i.h"
 #include <string>
 
 class RenderDeviceWindow/// Window to render to, provides input functionality as well.
