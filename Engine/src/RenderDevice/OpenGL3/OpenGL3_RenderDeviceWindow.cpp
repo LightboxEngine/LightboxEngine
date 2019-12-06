@@ -4,18 +4,18 @@
 #include <glm/glm.hpp>
 #include <iostream>
 
-#include "RenderDevice/OpenGL/OpenGL_RenderDeviceWindow.h"
+#include "RenderDevice/OpenGL3/OpenGL3_RenderDeviceWindow.h"
 
 #include "Math/Vector2i.h"
 
-OpenGL_RenderDeviceWindow::OpenGL_RenderDeviceWindow()
+OpenGL3_RenderDeviceWindow::OpenGL3_RenderDeviceWindow()
 {
     width = 0;
     height = 0;
     vsync = true;
 }
 
-OpenGL_RenderDeviceWindow::~OpenGL_RenderDeviceWindow()
+OpenGL3_RenderDeviceWindow::~OpenGL3_RenderDeviceWindow()
 {
     //
 }
@@ -30,7 +30,7 @@ void character_callback(GLFWwindow* window, unsigned int codepoint)
     std::cout << "Need to implement character_callback or find a different methode for input." << std::endl;
 }
 
-void OpenGL_RenderDeviceWindow::Init(unsigned int _width, unsigned int _height, bool _vsyncEnabled)
+void OpenGL3_RenderDeviceWindow::Init(unsigned int _width, unsigned int _height, bool _vsyncEnabled)
 {
     width = _width;
     height = _height;
@@ -74,7 +74,7 @@ void OpenGL_RenderDeviceWindow::Init(unsigned int _width, unsigned int _height, 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);*/
 }
 
-void OpenGL_RenderDeviceWindow::BeginFrame()
+void OpenGL3_RenderDeviceWindow::BeginFrame()
 {
     glfwMakeContextCurrent(GLFWGLwindow);
     glfwPollEvents();
@@ -85,22 +85,22 @@ void OpenGL_RenderDeviceWindow::BeginFrame()
     height = _height;
 }
 
-void OpenGL_RenderDeviceWindow::EndFrame()
+void OpenGL3_RenderDeviceWindow::EndFrame()
 {
     glfwSwapBuffers(GLFWGLwindow);
 }
 
-std::string OpenGL_RenderDeviceWindow::getWindowInfo()
+std::string OpenGL3_RenderDeviceWindow::getWindowInfo()
 {
     return "Please load a valid RenderDeviceWindow! No info available!";
 }
 
-bool OpenGL_RenderDeviceWindow::windowShouldClose()
+bool OpenGL3_RenderDeviceWindow::windowShouldClose()
 {
     return glfwWindowShouldClose(GLFWGLwindow);
 }
 
-bool* OpenGL_RenderDeviceWindow::getMouseButtonsPressed()
+bool* OpenGL3_RenderDeviceWindow::getMouseButtonsPressed()
 {
     return new bool[3] {
             (bool)glfwGetMouseButton(GLFWGLwindow, GLFW_MOUSE_BUTTON_LEFT),
@@ -109,19 +109,19 @@ bool* OpenGL_RenderDeviceWindow::getMouseButtonsPressed()
 };
 }
 
-Vector2i OpenGL_RenderDeviceWindow::getMousePosition()
+Vector2i OpenGL3_RenderDeviceWindow::getMousePosition()
 {
     double xpos, ypos;
     glfwGetCursorPos(GLFWGLwindow, &xpos, &ypos);
     return Vector2i(xpos, ypos);
 }
 
-Vector2i OpenGL_RenderDeviceWindow::getWindowSize()
+Vector2i OpenGL3_RenderDeviceWindow::getWindowSize()
 {
     return Vector2i(width, height);
 }
 
-std::pair<int, bool> OpenGL_RenderDeviceWindow::getKeyboardKeySingle()
+std::pair<int, bool> OpenGL3_RenderDeviceWindow::getKeyboardKeySingle()
 {
     if (keyPressed != -1)
     {
@@ -134,7 +134,7 @@ std::pair<int, bool> OpenGL_RenderDeviceWindow::getKeyboardKeySingle()
     return std::pair<int, bool>(-1, false);
 }
 
-std::pair<unsigned int, bool> OpenGL_RenderDeviceWindow::getKeyboardCharSingle()
+std::pair<unsigned int, bool> OpenGL3_RenderDeviceWindow::getKeyboardCharSingle()
 {
     if (pressed == true)
     {
@@ -146,7 +146,7 @@ std::pair<unsigned int, bool> OpenGL_RenderDeviceWindow::getKeyboardCharSingle()
     }
 }
 
-void OpenGL_RenderDeviceWindow::glfwErrorCallback(int error, const char* description)
+void OpenGL3_RenderDeviceWindow::glfwErrorCallback(int error, const char* description)
 {
     std::cout << "GLFW ERROR: " << error << ", " << description << std::endl;
 }

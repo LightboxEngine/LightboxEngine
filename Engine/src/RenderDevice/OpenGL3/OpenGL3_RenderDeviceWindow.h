@@ -6,11 +6,11 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
-class OpenGL_RenderDeviceWindow : public RenderDeviceWindow
+class OpenGL3_RenderDeviceWindow : public RenderDeviceWindow
 {
 public:
-    OpenGL_RenderDeviceWindow();
-    ~OpenGL_RenderDeviceWindow();
+    OpenGL3_RenderDeviceWindow();
+    ~OpenGL3_RenderDeviceWindow();
 
     virtual void Init(unsigned int _width, unsigned int _height, bool _vsyncEnabled = true);
     virtual void BeginFrame();

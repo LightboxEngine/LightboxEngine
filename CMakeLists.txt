@@ -14,9 +14,11 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=return-type")
 file(GLOB EngineSOURCES
     "Engine/src/*.cpp" "Engine/src/*.h"
     "Engine/src/RenderDevice/*.cpp" "Engine/src/RenderDevice/*.h"
-    "Engine/src/RenderDevice/OpenGL/*.cpp" "Engine/src/RenderDevice/OpenGL/*.h"
+    "Engine/src/RenderDevice/OpenGL3/*.cpp" "Engine/src/RenderDevice/OpenGL3/*.h"
+    "Engine/src/RenderDevice/OpenGLES3/*.cpp" "Engine/src/RenderDevice/OpenGLES3/*.h"
     "Engine/src/RenderDevice/None/*.cpp" "Engine/src/RenderDevice/None/*.h"
     "Engine/src/Math/*.cpp" "Engine/src/Math/*.h"
+    "Engine/src/FrameWork/*.cpp" "Engine/src/FrameWork/*.h"
     "Libraries/glad/src/glad.c"
 )
 
