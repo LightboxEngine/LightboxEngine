@@ -2,6 +2,6 @@
 
 Vector2i::Vector2i(int x, int y)
 {
-    x = this->x;
-    y = this->y;
+    this->x = x;
+    this->y = y;
 }
