@@ -2,10 +2,14 @@
 #include "GlobalAccess.h"
 #include "RenderDevice/OpenGL3/OpenGL3_RenderDevice.h"
 #include "RenderDevice/OpenGL3/OpenGL3_RenderDeviceWindow.h"
+#include "Renderer/BaseRenderer.h"
 
 int main()
 {
     std::cout << "main" << std::endl;
+
+    MessageSystem *messageSystem = new MessageSystem();
+    GlobalAccess::messageSystem = messageSystem;
 
     RenderDeviceWindow *renderDeviceWindow = new OpenGL3_RenderDeviceWindow();
     RenderDevice *renderDevice = new OpenGL3_RenderDevice();
@@ -13,11 +17,10 @@ int main()
     GlobalAccess::renderDeviceWindow = renderDeviceWindow;
     renderDeviceWindow->Init(1920, 1080, false);
     renderDevice->init();
-
     std::cout << "Renderer Info: " << renderDevice->getRenderDeviceInfo() << std::endl;
 
-    MessageSystem *messageSystem = new MessageSystem();
-    GlobalAccess::messageSystem = messageSystem;
+    BaseRenderer *baseRenderer = new BaseRenderer();
+    GlobalAccess::baseRenderer = baseRenderer;
 
     while(!renderDeviceWindow->windowShouldClose())
     {
@@ -25,6 +28,8 @@ int main()
         renderDevice->BeginFrame();
         renderDevice->clearScreen(0.5f, 0.5f, 0.5f, 1);
         renderDevice->setRendererViewportSize(0, 0, renderDeviceWindow->getWindowSize().x, renderDeviceWindow->getWindowSize().y);
+
+        baseRenderer->renderFrame();
 
         renderDevice->EndFrame();
         renderDeviceWindow->EndFrame();
