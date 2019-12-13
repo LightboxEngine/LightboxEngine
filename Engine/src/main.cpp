@@ -3,6 +3,7 @@
 #include "RenderDevice/OpenGL3/OpenGL3_RenderDevice.h"
 #include "RenderDevice/OpenGL3/OpenGL3_RenderDeviceWindow.h"
 #include "Renderer/BaseRenderer.h"
+#include "FrameWork/GameObject.h"
 
 int main()
 {

@@ -4,8 +4,9 @@
 #include "RenderDevice/RenderDeviceWindow.h"
 #include "MessageSystem.h"
 #include "Renderer/BaseRenderer.h"
+#include "Core/GlobalGameObjectManager.h"
 
-class GlobalAccess
+class GlobalAccess///< Provides easy access to essential systems throughout the engine.
 {
 public:
     static RenderDevice *renderDevice;

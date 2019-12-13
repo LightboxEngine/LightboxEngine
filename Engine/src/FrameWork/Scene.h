@@ -9,7 +9,7 @@ class Scene
 public:
     Scene();
 
-    std::map<std::string, GameObject> gameObjects;
+    std::shared_ptr<GameObject> rootGameObject;
 };
 
 #endif // SCENE_H

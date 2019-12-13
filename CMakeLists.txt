@@ -18,6 +18,7 @@ file(GLOB EngineSOURCES
     "Engine/src/RenderDevice/OpenGLES3/*.cpp" "Engine/src/RenderDevice/OpenGLES3/*.h"
     "Engine/src/RenderDevice/None/*.cpp" "Engine/src/RenderDevice/None/*.h"
     "Engine/src/Math/*.cpp" "Engine/src/Math/*.h"
+    "Engine/src/Core/*.cpp" "Engine/src/Core/*.h"
     "Engine/src/FrameWork/*.cpp" "Engine/src/FrameWork/*.h"
     "Engine/src/Renderer/*.cpp" "Engine/src/Renderer/*.h"
     "Libraries/glad/src/glad.c"
