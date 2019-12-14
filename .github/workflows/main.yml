@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: sudo apt-get install xorg-dev libglu1-mesa-dev
+    - name: Configure
+      run: |
+        mkdir Build
+        cd Build
+        cmake ..
+    - name: Compile
+      run: |
+        cd Build
+        make -j4
