@@ -18,4 +18,5 @@ jobs:
         cmake ..
     - name: Compile
       run: |
+        cd Build
         make -j4
