@@ -9,7 +9,7 @@ class Scene
 public:
     Scene();
 
-    std::shared_ptr<GameObject> rootGameObject;
+    std::unique_ptr<GameObject> rootGameObject;///< Root GameObject. Doesn't have any functionality, it just serves as a container for all objects in scene.
 };
 
 #endif // SCENE_H

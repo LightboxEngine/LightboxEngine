@@ -17,20 +17,29 @@ public:
 
     std::string publicName;
 
-    Component *parentComponent;
     GameObject *parentGameObject;
 
     bool markedForDeletion;
     void deleteSelf();///< This will cause this GameObject to be deleted at the next frame!
 
-    std::map<std::string, std::shared_ptr<Component>> components;
-    std::map<std::string, std::shared_ptr<GameObject>> gameobjects;
+    std::unique_ptr<Component> rootComponent;
+    std::vector<std::unique_ptr<GameObject>> gameobjects;
 
     std::vector<GameObject*> getAllChildGameObjects();
     std::vector<Component*> getAllChildComponents();
 
-    GameObject* getChildGameObjectByName(std::string name);
-    Component* getChildComponentByName(std::string name);
+    std::vector<GameObject*> getChildGameObjectByName(std::string name);
+    std::vector<Component*> getChildComponentByName(std::string name);
+
+    std::vector<GameObject*> getChildGameObjectByNameRecursive(std::string name);
+    std::vector<Component*> getChildComponentByNameRecursive(std::string name);
+
+    void addGameObjectByPtr(GameObject* ptr);///< This will add the provided GameObject as child to this GameObject. Doing this WILL take ownership of the GameObject provided.
+    GameObject *addNewGameObject(std::string publicName);///< Add new child GameObject by name and return pointer to it.
+
+    void addComponentByPtr(Component* ptr);///< This function will add the provided Component by pointer and name as child to this GameObject. This WILL take ownership of the Component.
+    Component *addNewComponent(std::string publicName);///< Add new child Component to this GameObject and return the pointer to it.
+
 };
 
 #endif // GAMEOBJECT_H

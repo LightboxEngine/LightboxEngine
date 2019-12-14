@@ -3,12 +3,64 @@
 #include "RenderDevice/OpenGL3/OpenGL3_RenderDevice.h"
 #include "RenderDevice/OpenGL3/OpenGL3_RenderDeviceWindow.h"
 #include "Renderer/BaseRenderer.h"
-#include "FrameWork/GameObject.h"
+#include "FrameWork/Scene.h"
+
+void printAllComponentChilds(Component *ptr, int index = 0)
+{
+    if (index == 0)
+    {
+        std::cout << "|-";
+    }
+    else
+    {
+        std::cout << "|";
+        for(int i = 0; i < index; i++)
+        {
+            std::cout << " |";
+        }
+        std::cout << "-";
+    }
+    std::cout << "[Component]" << ptr->publicName << std::endl;
+
+    for (int i = 0; i < ptr->components.size(); i++)
+    {
+        printAllComponentChilds(ptr->components[i].get(), index + 1);
+    }
+}
+
+void printGameObjectChilds(GameObject *ptr, int index = 0)
+{
+    if (index == 0)
+    {
+        std::cout << "|-";
+    }
+    else
+    {
+        std::cout << "|";
+        for(int i = 0; i < index; i++)
+        {
+            std::cout << " |";
+        }
+        std::cout << "-";
+    }
+
+
+    std::cout << "[GameObject]" << ptr->publicName << std::endl;
+    for (int i = 0; i < ptr->gameobjects.size(); i++)
+    {
+        printGameObjectChilds(ptr->gameobjects[i].get(), index + 1);
+        printAllComponentChilds(ptr->rootComponent.get(), index + 1);
+    }
+}
+
+void printSceneChilds(Scene *ptr)
+{
+    printGameObjectChilds(ptr->rootGameObject.get());
+}
 
 int main()
 {
-    std::cout << "main" << std::endl;
-
+    std::cout << "Lightbox Engine Compiled: " << __DATE__ << " " << __TIME__ << std::endl;
     MessageSystem *messageSystem = new MessageSystem();
     GlobalAccess::messageSystem = messageSystem;
 
@@ -22,6 +74,13 @@ int main()
 
     BaseRenderer *baseRenderer = new BaseRenderer();
     GlobalAccess::baseRenderer = baseRenderer;
+
+    Scene newScene;
+    GameObject* newGameObjectInScene = newScene.rootGameObject->addNewGameObject("New GameObject");
+    newGameObjectInScene->addNewComponent("New Component");
+    newGameObjectInScene->addNewGameObject("Second GameObject");
+
+    printSceneChilds(&newScene);
 
     while(!renderDeviceWindow->windowShouldClose())
     {
