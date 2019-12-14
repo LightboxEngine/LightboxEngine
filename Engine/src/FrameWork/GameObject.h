@@ -13,6 +13,8 @@ public:
     void begin();///< Executed only once, when the object is created.
     void tick(float delta);///< Executed every frame, delta is in ms.
 
+    bool initiated;
+
     std::string publicName;
 
     Component *parentComponent;
