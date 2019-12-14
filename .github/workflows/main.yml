@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Configure
+      run: |
+        mkdir Build
+        cd Build
+        cmake ..
+    - name: Compile
+      run: |
+        make -j4
