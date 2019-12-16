@@ -20,6 +20,7 @@ private:
     std::map<std::string, std::shared_ptr<Asset>> assets;
 public:
     template <class T> std::shared_ptr<T> getAssetByPath(std::string path);
+    bool addAssetByPtr(Asset *ptr);///< This will take ownership of the pointer.
 };
 
 template<class T>

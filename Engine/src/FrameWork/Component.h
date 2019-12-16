@@ -3,8 +3,9 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "Asset.h"
 
-class Component
+class Component : Asset
 {
 public:
     Component();

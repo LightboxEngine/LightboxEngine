@@ -1,8 +1,8 @@
 #ifndef MESH_H
 #define MESH_H
+#include "Asset.h"
 
-
-class Mesh
+class Mesh : public Asset
 {
 public:
     Mesh();

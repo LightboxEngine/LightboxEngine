@@ -4,8 +4,9 @@
 #include <memory>
 #include <vector>
 #include "Component.h"
+#include "Asset.h"
 
-class GameObject
+class GameObject : Asset
 {
 public:
     GameObject();

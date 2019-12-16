@@ -3,8 +3,9 @@
 #include <map>
 #include <string>
 #include "GameObject.h"
+#include "Asset.h"
 
-class Scene
+class Scene : Asset
 {
 public:
     Scene();
