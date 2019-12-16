@@ -25,9 +25,6 @@ int main()
     BaseRenderer *baseRenderer = new BaseRenderer();
     GlobalAccess::baseRenderer = baseRenderer;
 
-    AssetManager man;
-    std::cout << (man.getAssetByPath<GameObject>("a") == nullptr) << std::endl;
-
     while(!renderDeviceWindow->windowShouldClose())
     {
         renderDeviceWindow->BeginFrame();
